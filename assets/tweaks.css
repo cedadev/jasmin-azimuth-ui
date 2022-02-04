@@ -1,0 +1,130 @@
+/**
+ * This file contains CSS tweaks required for the cloud portal.
+ */
+
+
+/* These rules make stacked modals sit nicely */
+.modal-backdrop.show ~ .modal-backdrop.show { z-index: 1080; }
+.modal.show ~ .modal.show { z-index: 2000; }
+
+
+/**
+ * These rules tweak the react-select styles to work better as a Bootstrap form control
+ */
+/* Remove the padding that form-control applies (let react-bootstrap do it instead) */
+.react-select__wrapper { padding: 0 !important; }
+/* Propogate the border-radius property to the react-select control to avoid clipping */
+.react-select__wrapper > div, .react-select__control { border-radius: inherit !important; }
+/* Remove the border and box shadow from the control as form-control also sets them */
+.react-select__control { border: none !important; box-shadow: none !important; }
+/* Make sure the menus appear above most things */
+.react-select__menu { z-index: 999 !important; }
+
+
+/* If styling a button as a link, make it look like a link */
+.btn-link { padding: 0 !important; }
+.btn-link:focus { box-shadow: none !important; }
+
+
+/* Without this, dropdown menus are clipped by the responsive wrapper */
+.table-responsive {
+    /* 300px should accommodate most menus */
+    padding-bottom: 300px;
+    margin-bottom: -300px;
+}
+
+
+/**
+ * Styles for rendering pre elements in a modal.
+ */
+.modal pre {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    padding: 1rem;
+    max-height: 400px;
+    overflow: scroll;
+}
+
+
+/**
+ * Styles for the notifications container.
+ */
+.notifications-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 350px;
+    z-index: 9999; /* This means notifications will appear above modals */
+    margin: 1rem;
+}
+.notifications-container .toast {
+    border-width: 3px;
+    margin-bottom: 1rem;
+}
+.notifications-container .toast:last-child {
+    margin-bottom: 0;
+}
+.notifications-container .toast-body {
+    max-height: 200px;
+    overflow: scroll;
+}
+
+
+/**
+ * Adjustments to tables containing resource representations.
+ */
+.resource-table th {
+    vertical-align: bottom;
+}
+.resource-table td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.resource-table .progress {
+    height: auto;
+    font-size: 0.85rem;
+}
+.resource-table .progress-bar {
+    padding: 0.25rem 1rem;
+}
+.resource-table .overlay-trigger {
+    cursor: pointer;
+}
+/* The last column of a resource table is always an actions column
+   which should shrink to fit the content */
+.resource-table tr > td:last-child {
+    width: 1%;
+}
+
+
+/**
+ * Adjustments for tables that show details as [name, value] pairs.
+ */
+.details-table {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.details-table > :not(caption) > * > * {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.details-table > * > * > *:first-child {
+    width: 40%;
+    text-align: right;
+}
+
+
+/**
+ * Custom styles for the cluster-type cards.
+ */
+.cluster-type-select .card .img-fluid {
+    margin: 0 auto;
+    max-height: 120px;
+}
+.card-body > :last-child {
+    margin-bottom: 0;
+}
+.cluster-parameters-type .img-fluid {
+    max-height: 80px;
+}
